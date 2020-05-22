@@ -30,14 +30,15 @@ char *url_encode(char *str)
 				*pstr == '-' ||
 				*pstr == '_' ||
 				*pstr == '.' ||
-				*pstr == '~')
+				*pstr == '~') {
 			*pbuf++ = *pstr;
-		else if (*pstr == ' ') 
+		} else if (*pstr == ' ') {
 			*pbuf++ = '+';
-		else 
+		} else {
 			*pbuf++ = '%',
-				*pbuf++ = to_hex(*pstr >> 4),
-				*pbuf++ = to_hex(*pstr & 15);
+		}
+		*pbuf++ = to_hex(*pstr >> 4),
+		*pbuf++ = to_hex(*pstr & 15);
 		pstr++;
 	}
 	*pbuf = '\0';
